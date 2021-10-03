@@ -1,44 +1,100 @@
+:root {
+  --width-col: 30;
+}
+
 * {
-  padding: 0;
-  margin: 0;
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
 }
 
 .container {
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 100vh;
   overflow: hidden;
-  height: 50vh;
-  padding: 10px;
+  position: relative;
+  /*display: flex;*/
 }
 
-.slide {
+.slider-color-boxes {
   height: 100%;
-  flex: 1;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  border-radius: 10px;
-  padding: 10px;
-  margin: 10px;
-  transition: all 500ms ease-in-out;
+  width: calc(var(--width-col) * 1%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  /*flex: 1*/
+}
+
+.slider-images {
+  height: 100%;
+  width: calc(100% - var(--width-col) * 1%);
+  top: 0;
+  left: calc(var(--width-col) * 1%);
+  position: absolute;
+  /*flex: 3*/
+}
+
+.slider-color-boxes > div {
+  height: 100%;
+  width: 100%;
   display: flex;
-}
-
-.slide p {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   color: white;
-  font-size: 16px;
-  align-self: flex-end;
-  transition: all 500ms;
 }
 
-.active {
-  flex: 5;
+.slider-color-boxes h2 {
+  font-size: 80px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-top: -30px;
+}
+.slider-color-boxes p {
+  font-size: 24px;
+  font-weight: bold;
 }
 
-.slide.active p {
-  font-size: 25px;
-  font-weight: 700;
+.slider-images > div {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+button {
+  background-color: white;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 30px;
+  border: none;
+  color: #aaa;
+}
+
+button:hover {
+  color: black;
+}
+
+.container .controlsBtn button {
+  position: absolute;
+  z-index: 2;
+  left: calc(var(--width-col) * 1%);
+  top: 50%;
+}
+
+.container .controlsBtn .btn-down {
+  transform: translateX(-100%);
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.container .controlsBtn .btn-up {
+  transform: translateY(-100%);
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
 }
